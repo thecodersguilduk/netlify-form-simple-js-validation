@@ -1,0 +1,47 @@
+<form name="contact" method="POST" data-netlify="true">
+    <p>
+        <label>Your Name: <input type="text" id="name" name="name" /></label>   
+    </p>
+    <p>
+        <label>Your Email: <input type="email" id="email" name="email" /></label>
+    </p>
+    <p>
+        <label>Your Role: <select name="role[]" multiple>
+        <option value="leader">Leader</option>
+        <option value="follower">Follower</option>
+        </select></label>
+    </p>
+    <p>
+        <label>Message: <textarea name="message"></textarea></label>
+    </p>
+    <p>
+        <button class="form_submit" type="submit">Send</button>
+    </p>
+</form>
+<script>
+    var borderStylePass = document.querySelector('#name').style.border;
+    var borderStyleFail = '1px solid red';
+    var submit_button = document.querySelector('.form_submit');
+    submit_button.addEventListener("click", function(event){
+        
+        var name = document.querySelector('#name');
+        var email = document.querySelector('#email');
+        blnValidated = true;
+        
+        name.style.border = borderStylePass;
+        if(!name.value){
+            blnValidated = false;
+            name.style.border = borderStyleFail;
+        }
+
+        email.style.border = borderStylePass;
+        if(!email.value){
+            blnValidated = false;
+            email.style.border = borderStyleFail;
+        }
+
+        if(!blnValidated){
+            event.preventDefault();
+        }
+    }, false);
+</script>
